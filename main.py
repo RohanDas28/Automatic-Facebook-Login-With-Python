@@ -1,8 +1,10 @@
 import time
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+
 
 #Initiliaze Webdriver
-driver = webdriver.Chrome("C:\\chromedriver_win32\\chromedriver.exe")  # If Throws Error Download Chrome Webdriver add the path like I did and try again.
+driver = webdriver.Chrome(ChromeDriverManager().install())
 
 def FacebookLogin():
     #Enter Your Email ID And Password

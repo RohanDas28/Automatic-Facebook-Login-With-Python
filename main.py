@@ -1,10 +1,13 @@
 import time
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-
+from webdriver_manager.chrome import ChromeDriverManager 
+from webdriver_manager.firefox import GeckoDriverManager
 
 # Initiliaze Webdriver
-driver = webdriver.Chrome(ChromeDriverManager().install())
+try:
+	driver = webdriver.Chrome(ChromeDriverManager().install())
+except:
+	driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
 
 def FacebookLogin():
     #Enter Your Email ID And Password

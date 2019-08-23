@@ -8,3 +8,7 @@
 ### 2. Install Webdriver Manager Using "PIP" ```pip install webdriver-manager or pip3 install webdriver-manager ```
 ### 3. Run Main.py.
 ---
+---
+# ```Exception```
+### If your drivers(ChromeDriverManager or GeckoDriverManager) are not installed then You have a proper Internet to install Drivers
+---

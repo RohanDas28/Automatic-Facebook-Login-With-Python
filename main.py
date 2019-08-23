@@ -3,7 +3,7 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-#Initiliaze Webdriver
+# Initiliaze Webdriver
 driver = webdriver.Chrome(ChromeDriverManager().install())
 
 def FacebookLogin():

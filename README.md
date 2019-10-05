@@ -1,5 +1,5 @@
 ![logo](https://rohandas28.github.io/img/favicon.png) 
-# Automatic Facebook Login With Python
+# Automatic Facebook Login With Python  [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
 ---
 ---
 #### This is a Python script to automate the login process on Facebook.com. It uses Python 3.x and  Selenium library to automate the process.

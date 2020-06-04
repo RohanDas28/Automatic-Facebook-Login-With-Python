@@ -1,4 +1,4 @@
-![logo](https://rohandas28.github.io/img/favicon.png) 
+<img src="https://rohandas28.github.io/img/logobig.png" data-canonical-src="https://rohandas28.github.io/img/logobig.png" width="100" height="100"/>
 # Automatic Facebook Login With Python  [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
 ---
 ---

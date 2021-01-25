@@ -14,5 +14,5 @@
 # ```Contributors```
 ## 1. [Rohan Das](https://rohandas28.github.io/).
 ## 2. [Nikhil Raj Pandey](https://github.com/NikhilRajPandey).
-## 3.[Sannidhya Dasgupta](https://github.com/Sannidhya127)
+## 3.[Sannidhya Dasgupta](https://github.com/Sannidhya127).
 ---

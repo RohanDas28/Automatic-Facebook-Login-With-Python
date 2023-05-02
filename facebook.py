@@ -2,6 +2,7 @@ import time, os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from colored import fg, bg, attr  # pip install colored
@@ -12,12 +13,19 @@ from fake import get_data
 load_dotenv()
 
 
+
+
 class Facebook:
     def __init__(self):
         try:
-            self.driver = webdriver.Chrome(ChromeDriverManager().install())
-        except:
-            self.driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
+            chrome_options = Options()
+            if eval(os.getenv('HEADLESS', 'False')):
+                chrome_options.add_argument('--headless')
+            self.driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
+
+        except Exception as e:
+            #self.driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
+            raise(e)
 
     def sign_up(self, user_data):
         try:
@@ -67,7 +75,7 @@ class Facebook:
             if user_data['gender'] == 'F':
                 gender = self.driver.find_element(By.XPATH, "//input[@name='sex' and @value='1']")
             elif user_data['gender'] == 'M':
-                gender = self.driver.find_element(By.XPATH, "//input[@name='sex' and @value='1']")
+                gender = self.driver.find_element(By.XPATH, "//input[@name='sex' and @value='2']")
             else:
                 print('Other genders are not supported yet!')
 
@@ -89,10 +97,7 @@ class Facebook:
             signup_box = self.driver.find_element(By.NAME, "websubmit")
             signup_box.click()
 
-            print(f"Done")
-            input(f"{fg('green_1')}Press anything to quit{attr('reset')}")
             print(f"{fg('green_1')}Finished{attr('reset')}")
-            return user_data
         except Exception as e:
             print(f"{fg('red_1')}Failed to execute script{attr('reset')}")
             print(f"{fg('red_1')}Exception: {e}")
@@ -138,6 +143,23 @@ class Facebook:
 if __name__ == "__main__":
      # Initiliaze Webdriver
 
+    import psutil
+    import resource
+    
+    # Start tracking resource usage
+    cpu_start = psutil.cpu_percent()
+    mem_start = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+
     user_data = get_data()
     fb = Facebook()
     fb.sign_up(user_data)
+
+    # Calculate resource usage after function call
+    cpu_end = psutil.cpu_percent()
+    mem_end = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+
+    # Print the results
+    print(f"CPU usage: {cpu_end - cpu_start}%")
+    print(f"Memory usage: {(mem_end - mem_start) / 1024} MB")
+
+    

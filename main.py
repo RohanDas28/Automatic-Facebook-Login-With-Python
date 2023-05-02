@@ -19,11 +19,11 @@ def FacebookSignUp():
     try:
         user_data = get_data()
         # Opening Facebook.
-        driver.get('https://www.facebook.com/')
+        driver.get(os.getenv('FB_URL'))
         print(f"{fg('yellow_1')}Faceboook Opened!{attr('reset')}")
         time.sleep(1)
 
-        signup_btn = driver.find_element(By.XPATH, "//a[@data-testid='open-registration-form-button']")
+        signup_btn = driver.find_element(By.XPATH, "//*[@data-testid='open-registration-form-button']")
         signup_btn.click()
         time.sleep(1)
 
@@ -44,7 +44,7 @@ def FacebookSignUp():
         email.send_keys(user_data['email'])
         time.sleep(1)
 
-        passwd = driver.find_element(By.NAME, 'reg_passwd__')
+        passwd = driver.find_element(By.ID, 'password_step_input')
         passwd.send_keys(user_data['pass'])
         time.sleep(1)
 
@@ -87,12 +87,14 @@ def FacebookSignUp():
         signup_box.click()
 
         print(f"Done")
-        input("{fg('green_1')}Press anything to quit{attr('reset')}")
-        # driver.quit()
+        input(f"{fg('green_1')}Press anything to quit{attr('reset')}")
         print(f"{fg('green_1')}Finished{attr('reset')}")
     except Exception as e:
         print(f"{fg('red_1')}Failed to execute script{attr('reset')}")
         print(f"{fg('red_1')}Exception: {e}")
+    finally:
+        driver.quit()
+
 
 def FacebookLogin():
     try:
@@ -128,5 +130,6 @@ def FacebookLogin():
     except Exception as e:
         print(f"{fg('red_1')}Failed to execute script{attr('reset')}")
         print(e)
-
+    finally:
+        driver.quit()
 FacebookSignUp()

@@ -2,7 +2,7 @@ import time, os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from colored import fg, bg, attr  # pip install colored
@@ -21,10 +21,10 @@ class Facebook:
             chrome_options = Options()
             if eval(os.getenv('HEADLESS', 'False')):
                 chrome_options.add_argument('--headless')
-            self.driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
+                self.driver = webdriver.Firefox(executable_path='./geckodriver', options=chrome_options)
+                #self.driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
 
         except Exception as e:
-            #self.driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
             raise(e)
 
     def sign_up(self, user_data):

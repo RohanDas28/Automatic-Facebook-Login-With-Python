@@ -1,5 +1,3 @@
-Here's the corrected markdown for the Automatic Facebook Login script with improved formatting:
-
 # Automatic Facebook Login With Python
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
 
